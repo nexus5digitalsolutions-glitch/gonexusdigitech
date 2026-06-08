@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)file:///C:/Users/mohda/Downloads/portfolio.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoNexus DigiTech - portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link href="./GoNexus DigiTech - portfolio.htmlortfolio_files/css2" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --lightazure :   #d6ecfa;
+      --darkblue :    #09255e;
+      --gold-lt: #D4AF37;
+      --ivory:   #F7F2E8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--lightazure);
+      color: var(--darkblue);
+      font-family: 'Cinzel', serif;
+      font-size: 17px;
+      line-height: 1.75;
+      cursor: none;
+    }
+
+    /* ── CUSTOM CURSOR ── */
+    .cursor-dot {
+      width: 8px; height: 8px;
+      background: var(--darkblue);
+      border-radius: 100%;
+      position: fixed; top: 5; left: 5;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform .1s;
+    }
+    .cursor-ring {
+      width: 60px; height: 60px;
+      border: 6px solid var(--lightazure);
+      border-radius: 100%;
+      position: fixed; top: 50; left: 50;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
+      opacity: .10;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 20px;
+      background: #09255e;
+      backdrop-filter: blur(50px);
+      border-bottom: 1px solid var(--lightazure);
+      transition: padding .3s;
+    }
+    .nav-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 15px; letter-spacing: .22em;
+      color: var(--lightazure); text-transform: uppercase;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 38px; list-style: none; }
+    .nav-links a {
+      font-family: 'Cinzel', serif;
+      font-size: 13.5px; letter-spacing: .18em;
+      color: var(--lightazure); text-decoration: none;
+      text-transform: uppercase;
+      transition: color none;
+    }
+    .nav-links a:hover { color: var(--gold-lt); }
+
+    /* ── GOLD LINE DIVIDER ── */
+    .divider {
+      display: flex; align-items: center; gap: 16px;
+      margin: 0 auto 56px;
+      max-width: 260px;
+    }
+    .divider span { flex: 1; height: 1px; background: var(--darkblue); opacity: .5; }
+    .divider i { width: 6px; height: 6px; border: 1px solid var(--darkblue); transform: rotate(45deg); display: block; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 75vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center;
+      padding: 140px 40px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 40%, rgb(10, 10, 85) (212,175,55,.08) 0%,),
+        url("data:gonexusdigitechlogo.newupdated.svg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23B8960C' stroke-width='0.3' opacity='0.18'%3E%3Cpath d='M30 0 L30 60 M0 30 L60 30'/%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 11px; letter-spacing: .55em;
+      color: var(--darkblue); text-transform: uppercase;
+      margin-bottom: 35px;
+      opacity: 0; animation: fadeUp .8s .2s forwards;
+    }
+    .hero-name {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(52px, 9vw, 108px); letter-spacing: .55em;
+      font-weight: 300; line-height: .75;
+      color: var(--darkblue);
+      letter-spacing: -.01em;
+      opacity: 5; animation: fadeUp .9s .4s forwards;
+    }
+    .hero-name em { font-style: Cinzel; color: var(--darkblue); }
+    .hero-tagline {
+      font-size: 20px; letter-spacing: 300em; color: var(--darkblue);
+      max-width: 580px; margin: 50px auto 0;
+      font-style: Cinzel;
+      opacity: 0; animation: fadeUp .9s .6s forwards;
+    }
+    .hero-cta {
+      margin-top: 52px;
+      display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp .9s .8s forwards;
+    }
+    .btn-gold {
+      display: inline-block;
+      padding: 13px 38px;
+      background: var(--gold-lt);
+      color: var(--gold-lt);
+      font-family: 'Cinzel', serif;
+      font-size: 11px; letter-spacing: .22em;
+      text-transform: uppercase; text-decoration: none;
+      border: none; cursor: none;
+      transition: background .25s, transform .2s;
+    }
+    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-block;
+      padding: 12px 38px;
+      border: 1px solid var(--gold-lt);
+      color: var(--gold-lt);
+      font-family: 'Cinzel', serif;
+      font-size: 11px; letter-spacing: .22em;
+      text-transform: uppercase; text-decoration: none;
+      cursor: none;
+      transition: background .25s, color 1.05s, transform .2s;
+    }
+    .btn-outline:hover { background: var(--gold); color: var(--gold-lt); transform: translateY(-2px); }
+    .scroll-indicator {
+      position: absolute; bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: .28em;
+      color: var(--muted); text-transform: uppercase;
+      opacity: 0; animation: fadeUp 1s 1.2s forwards;
+    }
+    .scroll-line {
+      width: 1px; height: 44px;
+      background: linear-gradient(to bottom, var(--darkblue),);
+      animation: fadeUp 1s 1.2s forwards;
+      animation: scrollPulse 1.6s ease-in-out infinite;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 110px 40px; }
+    .section-inner { max-width: 1080px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10.5px; letter-spacing: .38em; color: var(--lightazure);
+      text-transform: uppercase; text-align: center;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(34px, 20px, 56px);
+      font-weight: 300; text-align: center;
+      color: var(--darkblue); line-height: 1.15;
+      margin-bottom: 52px;
+    }
+    .section-title em { font-style: Cinzel; color: var(--darkblue); }
+
+    /* ── ABOUT ── */
+    #about { background: --darkblue, var(--lightazure); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.45fr;
+      gap: 72px; align-items: center;
+    }
+    .about-portrait {
+      background: var(--darkblue);
+      position: relative;
+    }
+    .portrait-frame {
+      width: 100%; aspect-ratio: 3/4;
+      background: var(--darkblue);
+      position: relative;
+      overflow: hidden;
+    }
+    .portrait-frame::before {
+      content: 'Cinzel';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, --lightazure (212,175,55,.18), transparent 60%);
+    }
+    .portrait-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px; color: var(--lightazure);
+      font-family: 'Cinzel', serif;
+      font-size: 11px; letter-spacing: .2em;
+    }
+    .portrait-placeholder svg { opacity: .5; }
+    .portrait-corner {
+      position: absolute;
+      width: 40px; height: 40px;
+      border-color: var(--lightazure);
+      border-style: solid;
+      border-width: 0;
+    }
+    .portrait-corner.tl { top: -10px; left: -10px; border-top-width: 1px; border-left-width: 1px; }
+    .portrait-corner.br { bottom: -10px; right: -10px; border-bottom-width: 1px; border-right-width: 1px; }
+    .about-text h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 28px; font-weight: 400;
+      margin-bottom: 22px; color: var(--darkblue);
+    }
+    .about-text p { color: var(--darkblue); margin-bottom: 18px; font-size: 16.5px; }
+    .stats-row {
+      display: flex; gap: 36px; margin-top: 36px;
+      border-top: 1px solid --darkblue(184,150,12,.25);
+      padding-top: 28px;
+    }
+    .stat-item { display: flex; flex-direction: column; }
+    .stat-num {
+      font-family: 'Cinzel', serif;
+      font-size: 38px; font-weight: 300;
+      color: var(--darkblue); line-height: 1;
+    }
+    .stat-lbl {
+      font-size: 12px; color: var(--darkblue);
+      letter-spacing: .12em; text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--lightazure); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      margin-top: 8px;
+    }
+    .service-card {
+      background: var(--darkblue);
+      padding: 48px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute; bottom: 15; left: 15;
+      width: 100%; height: 1px;
+      background: var(--lightazure);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s ease;
+    }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-card:hover { transform: translateY(-4px); }
+    .service-num {
+      font-family: 'Cinzel', serif;
+      font-size: 13px; color: var(--lightazure);
+      letter-spacing: .22em; margin-bottom: 20px;
+      display: block;
+    }
+    .service-icon {
+      width: 44px; height: 44px; margin-bottom: 24px;
+      color: var(--gold-lt); opacity: .7;
+    }
+    .service-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 22px; font-weight: 400;
+      margin-bottom: 14px; color: var(--lightazure);
+    }
+    .service-card p { font-size: 15.5px; color: var(--lightazure); line-height: 1.7; }
+    .service-tags {
+      display: flex; flex-wrap: wrap; gap: 7px;
+      margin-top: 22px;
+    }
+    .tag {
+      font-size: 11px; font-family: 'Cinzel', serif;
+      letter-spacing: .15em; padding: 4px 4px;
+      border: 1px solid --lightazure(184,150,12,.35);
+      color: var(--gold-lt);
+    }
+
+    /* ── PORTFOLIO ── */
+    #portfolio { background: var(--lightazure); color: var(--lightazure); }
+    #portfolio .section-title { color: var(--lightazure); }
+    #portfolio .section-label { color: var(--darkblue); }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+    .portfolio-item {
+      position: relative; overflow: hidden;
+      aspect-ratio: 4/5;
+      background: var(--darkblue);
+      cursor: none;
+    }
+    .portfolio-item:first-child { grid-column: span 2; aspect-ratio: auto; }
+    .port-img {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, --darkblue 0%, --darkblue 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .port-img::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 70% at 50% 40%,--darkblue(212,175,55,.08), transparent);
+    }
+    .port-placeholder {
+      font-family: 'Cinzel', serif;
+      font-size: 13px; color: --darkblue(212,175,55,.35);
+      letter-spacing: .2em; text-align: center;
+    }
+    .port-overlay {
+      position: absolute; inset: 0;
+      background: rgba(10,9,5,.78);
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px;
+      opacity: 0;
+      transition: opacity .32s ease;
+    }
+    .portfolio-item:hover .port-overlay { opacity: 1; }
+    .port-overlay h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 22px; font-weight: 400;
+      color: var(--lightazure); margin-bottom: 6px;
+    }
+    .port-overlay p { font-size: 13px; color: var(--lightazure); letter-spacing: .12em; }
+    .port-line {
+      width: 40px; height: 1px;
+      background: var(--lightazure);
+      margin-bottom: 14px;
+    }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--lightazure); }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 8px;
+    }
+    .testi-card {
+      background: var(--darkblue);
+      padding: 40px 32px;
+      position: relative;
+    }
+    .testi-card::before {
+      content: '\201C';
+      font-family: 'Cinzel', serif;
+      font-size: 80px; line-height: .7;
+      color: var(--lightazure);
+      position: absolute; top: 24px; left: 24px;
+    }
+    .testi-text {
+      font-style: italic; font-size: 16px;
+      color: var(--lightazure); margin-bottom: 24px;
+      padding-top: 20px; position: relative; z-index: 1;
+    }
+    .testi-author { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: .18em; color: var(--lightazure); }
+    .testi-role { font-size: 13px; color: var(--lightazure); margin-top: 4px; }
+    .testi-stars { color: var(--gold-lt); font-size: 18px; margin-bottom: 12px; letter-spacing: 3px; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--lightazure); color: var(--darkblue); text-align: center; }
+    #contact .section-title { color: var(--darkblue); }
+    #contact .section-label { color: var(--darkblue); }
+    .contact-sub {
+      max-width: 480px; margin: 0 auto 52px;
+      font-style: italic; font-size: 17px; color: #09255e(247,242,232,.55);
+    }
+    .contact-links {
+      display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+    .contact-link {
+      display: flex; align-items: center; gap: 10px;
+      font-family: 'Cinzel', serif; font-size: 11px;
+      letter-spacing: .2em; color: var(--darkblue);
+      text-decoration: none; text-transform: uppercase;
+      padding: 14px 28px;
+      border: 1px solid #09255e(212,175,55,.25);
+      transition: border-color .25s, color .25s;
+    }
+    .contact-link:hover { border-color: var(--darkblue); color: var(--darkblue); }
+    .contact-form {
+      max-width: 580px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-field {
+      display: flex; flex-direction: column; gap: 8px;
+      text-align: left;
+    }
+    .form-field label {
+      font-family: 'Cinzel', serif; font-size: 10px;
+      letter-spacing: .25em; color: var(--darkblue);
+      text-transform: uppercase;
+    }
+    .form-field input,
+    .form-field textarea {
+      background:( var(--darkblue) transparent (50%) );
+      border: none; border-bottom: 1px solid darkblue(212,175,55,.25);
+      padding: 12px 0;
+      color: var(--darkblue);
+      font-family: 'Cinzel Regular', serif; font-size: 16px;
+      outline: none;
+      transition: border-color .25s;
+    }
+    .form-field input:focus,
+    .form-field textarea:focus { border-bottom-color: var(--darkblue); }
+    .form-field textarea { resize: none; height: 90px; }
+    .form-field input::placeholder,
+    .form-field textarea::placeholder { color: #09255e(247,242,232,.2); }
+    .form-submit {
+      margin-top: 12px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--darkblue); color: var(--lightazure);
+      text-align: center; padding: 32px 40px;
+      font-family: 'Cinzel', serif;
+      font-size: 10.5px; letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+    footer span { color: var(--lightazure); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: .6; transform: scaleY(1); }
+      50%       { opacity: 1; transform: scaleY(1.12); }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .75s ease, transform .75s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 18px 28px; }
+      .nav-links { gap: 22px; }
+      .about-grid { grid-template-columns: 1fr; gap: 44px; }
+      .about-portrait { max-width: 320px; margin: 0 auto; }
+      .services-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .portfolio-item:first-child { grid-column: span 2; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      section { padding: 80px 22px; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .portfolio-item:first-child { grid-column: span 1; }
+      .contact-links { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor-dot" id="dot" style="left: 724px; top: 244px;"></div>
+  <div class="cursor-ring" id="ring" style="left: 724px; top: 244px; width: 32px; height: 32px;"></div>
+
+  <!-- NAV -->
+  <nav style="padding: 20px 60px;">
+    <a href="file:///C:/Users/mohda/Downloads/portfolio.html#hero" class="nav-logo">GoNexus DigiTech</a>
+    <ul class="nav-links">
+      <li><a href="file:///C:/Users/mohda/Downloads/portfolio.html#about">About</a></li>
+      <li><a href="file:///C:/Users/mohda/Downloads/portfolio.html#services">Services</a></li>
+      <li><a href="file:///C:/Users/mohda/Downloads/portfolio.html#portfolio">Work</a></li>
+      <li><a href="file:///C:/Users/mohda/Downloads/portfolio.html#testimonials">Clients</a></li>
+      <li><a href="file:///C:/Users/mohda/Downloads/portfolio.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <p class="hero-eyebrow">Digital Marketing &amp; Creative Design</p>
+    <h1 class="hero-name">GoNexus <em>DigiTech</em></h1>
+    <p class="hero-tagline">Grow Beyond Limits</p>
+    <div class="hero-cta">
+      <a href="file:///C:/Users/mohda/Downloads/portfolio.html#portfolio" class="btn-darkblue">View My Work</a>
+      <a href="file:///C:/Users/mohda/Downloads/portfolio.html#contact" class="btn-darkblue">Let's Connect</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label reveal visible">About</p>
+      <h2 class="section-title reveal visible"><em>The Craft Behind the Brand </em></h2>
+      <div class="about-grid">
+        <div class="about-portrait reveal visible">
+          <div class="portrait-frame">
+            <div class="portrait-placeholder">
+  <img src="file:///C:/Users/mohda/Downloads/your-photo.jpg" alt="Mohd Abdul Basharath" style="width:100%; height:100%; object-fit:cover; border-radius:inherit;">
+</div>
+<img src="file:///C:/Users/mohda/Downloads/images/my-photo.jpg" ...="">
+
+            <div class="portrait-corner tl"></div>
+            <div class="portrait-corner br"></div>
+          </div>
+        </div>
+        <div class="about-text reveal visible">
+          <h3>Hello, I'm <em style="font-style:italic;color:var(--darkblue)">Mohd Abdul Basharath</em></h3>
+          <p>A passionate digital marketing professional and visual storyteller with a flair for creating compelling brand experiences. I blend data driven strategy with beautiful design to help businesses thrive in the digital landscape.</p>
+          <p>From crafting scroll stopping social media content to building cohesive brand identities in Canva, every project is an opportunity to elevate your presence and connect with your audience on a deeper level.</p>
+          <p>Based in Hyderabad.</p>
+          <p>available for worldwide remote collaborations.</p>
+          <div class="stats-row">
+            <div class="stat-item">
+              <span class="stat-num">3+</span>
+              <span class="stat-lbl">Years Experience</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">50+</span>
+              <span class="stat-lbl">Projects Delivered</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">30+</span>
+              <span class="stat-lbl">Happy Clients</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <p class="section-label reveal visible">What I Do</p>
+      <h2 class="section-title reveal visible">Services Tailored <em>For You</em></h2>
+      <div class="divider reveal visible"><span></span><i></i><span></span></div>
+      <div class="services-grid">
+        <div class="service-card reveal visible">
+          <span class="service-num">01</span>
+          <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="4" y="8" width="36" height="28" rx="2"></rect>
+            <path d="M14 30 L20 22 L25 27 L30 20 L36 30"></path>
+            <circle cx="14" cy="17" r="3"></circle>
+          </svg>
+          <h3>Social Media Marketing (SMM)</h3>
+          <p>Strategic content planning, community management, and growth campaigns that amplify your brand's voice across all platforms.</p>
+          <div class="service-tags">
+            <span class="tag">Instagram</span>
+            <span class="tag">whatsapp</span>
+            <span class="tag">Facebook</span>
+          </div>
+        </div>
+        <div class="service-card reveal visible">
+          <span class="service-num">02</span>
+          <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="22" cy="22" r="16"></circle>
+            <path d="M22 6 C28 14 28 30 22 38"></path>
+            <path d="M22 6 C16 14 16 30 22 38"></path>
+            <path d="M6 22 L38 22"></path>
+          </svg>
+          <h3>Digital Marketing Strategy</h3>
+          <p>End-to-end campaign planning, audience targeting, and performance analytics that translate into real business growth.</p>
+          <div class="service-tags">
+            <span class="tag">SEO</span>
+            <span class="tag">Paid Ads</span>
+            <span class="tag">Branding</span>
+          </div>
+        </div>
+        <div class="service-card reveal visible">
+          <span class="service-num">03</span>
+          <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="6" y="10" width="32" height="24" rx="2"></rect>
+            <path d="M14 20 L20 20 M14 24 L28 24 M14 28 L24 28"></path>
+            <path d="M26 14 L32 14 L32 20"></path>
+          </svg>
+          <h3>Web Design &amp; Development</h3>
+          <p>The process of planning, creating, and maintaining a website that looks great, works flawlessly, and converts visitors into customers.</p>
+          <div class="service-tags">
+            <span class="tag">All Types of websites</span>
+          </div>
+        </div>
+        <div class="service-card reveal visible">
+          <span class="service-num">04</span>
+          <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M8 34 L16 20 L22 28 L28 18 L36 34"></path>
+            <path d="M6 10 L38 10"></path>
+            <path d="M22 10 L22 6"></path>
+          </svg>
+          <h3>Content Creation</h3>
+          <p> The process of planning, producing, and publishing valuable material that attracts, educates, and converts your target audience.</p>
+          <div class="service-tags">
+            <span class="tag">Social Media Posts &amp; Reels</span>
+          </div>
+        </div>
+        <div class="service-card reveal visible">
+          <span class="service-num">05</span>
+          <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="22" cy="22" r="6"></circle>
+            <path d="M22 6 L22 12 M22 32 L22 38 M6 22 L12 22 M32 22 L38 22"></path>
+            <path d="M11 11 L15 15 M29 29 L33 33 M11 33 L15 29 M29 15 L33 11"></path>
+          </svg>
+          <h3>Brand Identity Design</h3>
+          <p>Strategic visual identities designed with custom logos, scalable colour systems, typography, and detailed brand guidelines.</p>
+          <div class="service-tags">
+            <span class="tag">Logo</span>
+            <span class="tag">Palette</span>
+            <span class="tag">Guidelines</span>
+          </div>
+        </div>
+        <div class="service-card reveal visible">
+          <span class="service-num">06</span>
+          <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="8" y="14" width="28" height="18" rx="1"></rect>
+            <path d="M14 32 L14 36 M30 32 L30 36 M10 36 L34 36"></path>
+            <path d="M16 22 L20 26 L28 18"></path>
+          </svg>
+          <h3>Campaign Management</h3>
+          <p>Strategic management of paid &amp; organic campaigns, combining ongoing optimisation, transparent reporting, and performance focused execution.</p>
+          <div class="service-tags">
+            <span class="tag">Meta Ads</span>
+            <span class="tag">Google Ads</span>
+            <span class="tag">Reporting</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="section-inner">
+      <p class="section-label reveal visible">Selected Work</p>
+      <h2 class="section-title reveal visible"><em>Recent Projects</em></h2>
+      <div class="divider reveal visible" style="border-color: #09255e;"><span style="background:darkblue;opacity: 0.9;"></span><i style="border-color:darkblue"></i><span style="background:darkblue;opacity: 0.9;"></span></div>
+      <div class="portfolio-grid">
+        <div class="portfolio-item reveal visible">
+          <div class="port-img">
+            <div class="port-placeholder">Add Your<br>Featured Project Image</div>
+          </div>
+          <div class="port-overlay">
+            <div class="port-line"></div>
+            <h4>Brand Identity — Fashion Label</h4>
+            <p>Canva Design · Brand Kit · Social Templates</p>
+          </div>
+        </div>
+        <div class="portfolio-item reveal visible">
+          <div class="port-img">
+            <div class="port-placeholder">Project Image</div>
+          </div>
+          <div class="port-overlay">
+            <div class="port-line"></div>
+            <h4>SMM Campaign — F&amp;B Brand</h4>
+            <p>Instagram · Content Calendar · Reels</p>
+          </div>
+        </div>
+        <div class="portfolio-item reveal visible">
+          <div class="port-img">
+            <div class="port-placeholder">Project Image</div>
+          </div>
+          <div class="port-overlay">
+            <div class="port-line"></div>
+            <h4>Launch Campaign — SaaS Startup</h4>
+            <p>Meta Ads · Email · Analytics</p>
+          </div>
+        </div>
+        <div class="portfolio-item reveal visible">
+          <div class="port-img">
+            <div class="port-placeholder">Project Image</div>
+          </div>
+          <div class="port-overlay">
+            <div class="port-line"></div>
+            <h4>Pitch Deck — Real Estate</h4>
+            <p>Canva Design · Presentation</p>
+          </div>
+        </div>
+        <div class="portfolio-item reveal visible">
+          <div class="port-img">
+            <div class="port-placeholder">Project Image</div>
+          </div>
+          <div class="port-overlay">
+            <div class="port-line"></div>
+            <h4>Content Strategy — Wellness Brand</h4>
+            <p>Copywriting · Visual Direction</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="section-inner">
+      <p class="section-label reveal visible">Testimonials</p>
+      <h2 class="section-title reveal visible">What <em>Clients</em> Say</h2>
+      <div class="testi-grid">
+        <div class="testi-card reveal visible">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Transformed our social media presence completely. Our engagement tripled within two months and the visuals are absolutely stunning."</p>
+          <p class="testi-author">MOHD NASEER</p>
+          <p class="testi-role">Founder, HKGN Furnitures.</p>
+        </div>
+        <div class="testi-card reveal visible">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"The Canva brand kit delivered was beyond our expectations. Professional, cohesive, and exactly on brand. Highly recommend."</p>
+          <p class="testi-author">MOHD SHAKEEL</p>
+          <p class="testi-role">Founder, SR Electricals.</p>
+        </div>
+        <div class="testi-card reveal visible">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"A rare combination of creative talent and strategic thinking. Our campaign ROI was the best we've ever seen. A true professional."</p>
+          <p class="testi-author">MOHD NASER</p>
+          <p class="testi-role">IT Engineer</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label reveal visible">Get In Touch</p>
+      <h2 class="section-title reveal visible">Let's Create Something <em>Remarkable</em></h2>
+      <p class="contact-sub reveal visible">Ready to elevate your brand? I'd love to hear about your project.</p>
+      <div class="contact-links reveal visible">
+        <a href="mailto:you@email.com" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M2 7l10 7 10-7"></path></svg>
+          nex.us5digitalsolutions@gmail.com
+        </a>
+        <a href="https://www.facebook/in/yourprofile" target="_blank" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"></rect><path d="M7 10v7M7 7v.5M12 17v-4a2 2 0 014 0v4M12 10v7"></path></svg>
+          GoNexus DigiTceh
+        </a><a href="https://www.instagram.com/yourhandle" target="_blank" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"></circle></svg>
+          @gonexusdigitech
+        </a>
+      </div>
+      <form class="contact-form reveal visible" onsubmit="return false">
+        <div class="form-row">
+          <div class="form-field">
+            <label>Your name</label>
+            <input type="text" placeholder="Mohammed">
+          </div>
+          <div class="form-field">
+            <label>Your Email</label>
+            <input type="email" placeholder="yourbrand@brand.com">
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Subject</label>
+          <input type="text" placeholder="Brand Identity Project">
+        </div>
+        <div class="form-field">
+          <label>Message</label>
+          <textarea placeholder="Tell me about your project…"></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn-darkblue" style="border: var(--darkblue);font-size:11px;letter-spacing:.22em;cursor:var(--lightazure);padding:14px 44px;">
+            Send Message
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 <span>gonexusdigitech</span> · Crafted with care · All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Custom cursor
+    const dot = document.getElementById('dot');
+    const ring = document.getElementById('ring');
+    document.addEventListener('mousemove', e => {
+      dot.style.left = e.clientX + 'px';
+      dot.style.top  = e.clientY + 'px';
+      ring.style.left = e.clientX + 'px';
+      ring.style.top  = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button, .portfolio-item, .service-card').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        ring.style.width = '52px'; ring.style.height = '52px';
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.style.width = '32px'; ring.style.height = '32px';
+      });
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Smooth nav shrink on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.padding = window.scrollY > 60 ? '14px 60px' : '20px 60px';
+    });
+  </script>
+
+
+</body></html>
